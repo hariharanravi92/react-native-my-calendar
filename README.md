@@ -8,7 +8,7 @@ My calendar Android and IOS  application Developed using with React Native
 
 ### Steps to Run
 
-* Clone the project files from git using SSH url
+* Clone the project files from git using SSH or HTTP url
 
 ```sh
 $ cd PoejectFolder
