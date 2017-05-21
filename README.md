@@ -11,7 +11,7 @@ My calendar Android and IOS  application Developed using with React Native
 * Clone the project files from git using SSH or HTTP url
 
 ```sh
-$ cd PoejectFolder
+$ cd ProjectFolder
 $ npm install
 $ react-native run-android 
 $ react-native start
