@@ -1,27 +1,44 @@
-import React, { Component } from 'react';
-import { Text,  View} from 'react-native';
+import React, { PureComponent } from 'react';
+import { View, StyleSheet } from 'react-native';
+import { TabViewAnimated, TabBar, SceneMap } from 'react-native-tab-view';
+import { CalendarComponent, EventsComponent } from '../../components'; 
 
-import Styles from './home.styles';
+const FirstRoute = () => <View style={[ styles.container, { backgroundColor: '#ff4081' } ]} />;
+const SecondRoute = () => <View style={[ styles.container, { backgroundColor: '#673ab7' } ]} />;
 
-class HomePage extends Component {
+export default class HomePage extends PureComponent {
+  state = {
+    index: 0,
+    routes: [
+      { key: '1', title: 'Calendar' },
+      { key: '2', title: 'Events' },
+    ],
+  };
+
+  _handleChangeTab = index => this.setState({ index });
+
+  _renderHeader = props => <TabBar {...props} />;
+
+  _renderScene = SceneMap({
+    '1': CalendarComponent,
+    '2': EventsComponent,
+  });
+
   render() {
     return (
-      <View style={Styles.container}>
-        <Text style={Styles.welcome}>
-         Home
-        </Text>
-        <Text style={Styles.instructions}>
-          To get started, edit index.ios.js
-        </Text>
-        <Text style={Styles.instructions}>
-          Press Cmd+R to reload,{'\n'}
-          Cmd+D or shake for dev menu
-        </Text>
-      </View>
+      <TabViewAnimated
+        style={styles.container}
+        navigationState={this.state}
+        renderScene={this._renderScene}
+        renderHeader={this._renderHeader}
+        onRequestChangeTab={this._handleChangeTab}
+      />
     );
   }
 }
 
-
-export default HomePage;
-
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+});
