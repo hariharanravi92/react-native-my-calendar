@@ -1,7 +1,6 @@
 class UtilitiesService {
 
     displayDate(timestamp) {
-        console.log(timestamp);
         var unixtime = timestamp;
         var newDate = new Date();
         newDate.setTime(unixtime * 1000);
@@ -35,7 +34,6 @@ class UtilitiesService {
         let formatAMPM = this.formatAMPM(date);
         let splitHourseAndAMPM = formatAMPM.split(" ");
         let splitHourse = splitHourseAndAMPM[0].split(":");
-        console.log(splitHourseAndAMPM)
 
         if(time == splitHourse[0] && ampm == splitHourseAndAMPM[1]){
             return 'true'
@@ -49,9 +47,6 @@ class UtilitiesService {
         let  currentDDMMYYYY =  currentDate + '/' + (date.getMonth() + 1) + '/' + date.getFullYear();
         let  yesterday =  currentDate - 1 + '/' + (date.getMonth() + 1) + '/' + date.getFullYear();
         let tmw =  currentDate + 1 + '/' + (date.getMonth() + 1) + '/' + date.getFullYear();
-        
-        console.log(yesterday + '-' + tmw);
-
         if(userSelectedDate === currentDDMMYYYY ){
             return 'Today';
         } else if(userSelectedDate === yesterday){
@@ -61,7 +56,18 @@ class UtilitiesService {
         } else {
             return 'false'
         }
-        
+    }
+
+    findCurrentDateObjectIndex(){
+        let objecIndex = 0;
+        let index = 0;
+        for ( let key of this.calenderObjects) {
+            objecIndex++;
+            if(this.getDay(key.date)[0] === 'Today'){
+                index = objecIndex;
+            }
+        }
+        return index-1;
     }
 
 

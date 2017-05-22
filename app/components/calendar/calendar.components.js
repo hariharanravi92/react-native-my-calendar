@@ -11,7 +11,7 @@ class CalendarComponent extends Component {
   constructor(props) {
 		super(props);
     this.state = {
-			localJSON: UtilitiesService.calenderObjects,
+			localJSON: UtilitiesService.calenderObjects
 		}
 	}
 
@@ -48,7 +48,7 @@ class CalendarComponent extends Component {
 	}
 
   componentWillMount(){
-		console.log(this.state.localJSON.length)
+		this.selectedDate =   UtilitiesService.findCurrentDateObjectIndex();
     const ds = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 });
 		this.setState({
 			loaded: true,
@@ -56,7 +56,7 @@ class CalendarComponent extends Component {
 		});
   }
 
-  render() {
+  render() { 
     return (
       <View style={Styles.container}>
 			<View style={[Styles.subHeader]}>
