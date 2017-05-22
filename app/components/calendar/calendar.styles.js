@@ -7,7 +7,16 @@ let Styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#fff',
+  },
+  subHeader : {
+    flexDirection: 'row',
+    left:0,
+    right:0,
+    top:0,
+    flex:1,
+    height:80,
+    position: 'absolute',
+    backgroundColor:'#dcdcdc'
   },
   welcome: {
     fontSize: 20,
